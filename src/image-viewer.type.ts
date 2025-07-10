@@ -94,6 +94,11 @@ export class Props {
     | '900';
 
   /**
+   * Padding top of counter text
+   */
+  public countTextTop?: number;
+
+  /**
    * Enable swipe down to close image viewer.
    * When swipe down, will trigger onCancel.
    */

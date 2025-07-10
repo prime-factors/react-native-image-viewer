@@ -57,6 +57,7 @@ export const simpleStyle = (
     color?: string;
     fontSize?: number;
     fontWeight?: 'bold' | 'normal' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
+    top?: number;
   } = {}
 ): {
   [x: string]: ViewStyle | TextStyle;
@@ -65,7 +66,7 @@ export const simpleStyle = (
     position: 'absolute',
     left: 0,
     right: 0,
-    top: Platform.OS === 'ios' ? 60 : 38,
+    top: params.top || (Platform.OS === 'ios' ? 60 : 38),
     zIndex: 13,
     justifyContent: 'center',
     alignItems: 'center',

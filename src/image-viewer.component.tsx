@@ -592,7 +592,8 @@ export default class ImageViewer extends React.Component<Props, State> {
     const currentStyles = simpleStyle({
       color: this.props.countTextColor,
       fontSize: this.props.countTextFontSize,
-      fontWeight: this.props.countTextFontWeight
+      fontWeight: this.props.countTextFontWeight,
+      top: this.props.countTextTop
     });
 
     const indicator = this.props.renderIndicator ? (
