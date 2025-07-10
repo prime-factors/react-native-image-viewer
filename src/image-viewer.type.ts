@@ -56,11 +56,6 @@ export class Props {
   public menuContext?: any = { saveToLocal: 'save to the album', cancel: 'cancel' };
 
   /**
-   * 是否开启长按保存到本地的功能
-   */
-  public saveToLocalByLongPress?: boolean = true;
-
-  /**
    * 是否允许缩放图片
    */
   public enableImageZoom?: boolean = true;
