@@ -419,8 +419,11 @@ export default class ImageViewer extends React.Component<Props, State> {
     if (event.nativeEvent.layout.width !== this.width) {
       this.hasLayout = true;
 
-      this.width = event.nativeEvent.layout.width;
-      this.height = event.nativeEvent.layout.height;
+      // Always use full screen dimensions for edge-to-edge display
+      const screenData = Dimensions.get('screen');
+      this.width = screenData.width;
+      this.height = screenData.height;
+
       this.styles = styles(this.width, this.height, this.props.backgroundColor || 'transparent');
 
       // 强制刷新
@@ -698,14 +701,23 @@ export default class ImageViewer extends React.Component<Props, State> {
       </View>
     );
 
+    // Always use absolute positioning for edge-to-edge display
+    const containerStyle = {
+      position: 'absolute' as const,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      width: '100%',
+      height: '100%',
+      overflow: 'hidden',
+      ...this.props.style
+    };
+
     return (
       <View
         onLayout={this.handleLayout}
-        style={{
-          flex: 1,
-          overflow: 'hidden',
-          ...this.props.style
-        }}
+        style={containerStyle}
       >
         {childs}
       </View>
