@@ -32,6 +32,6 @@
     "react-native": "*",
     "tslint": "^5.8.0",
     "tslint-config-prettier": "^1.13.0",
-    "typescript": "^2.9.2"
+    "typescript": "^5.8.3"
   }
 }

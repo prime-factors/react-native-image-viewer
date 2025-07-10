@@ -1,4 +1,4 @@
-import { TextStyle, ViewStyle, Platform } from 'react-native';
+import { Platform, TextStyle, ViewStyle } from 'react-native';
 
 export default (
   width: number,
@@ -7,29 +7,9 @@ export default (
 ): {
   [x: string]: ViewStyle | TextStyle;
 } => {
-  // Get safe area insets for iOS
-  const statusBarHeight = Platform.OS === 'ios' ? 44 : 0; // Approximate safe area top
-  const bottomSafeArea = Platform.OS === 'ios' ? 34 : 0; // Approximate safe area bottom for newer iPhones
-
   return {
-    modalContainer: {
-      backgroundColor,
-      justifyContent: 'center',
-      alignItems: 'center',
-      overflow: 'hidden',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width,
-      height
-    },
-    watchOrigin: {
-      position: 'absolute',
-      width,
-      bottom: 20,
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
+    modalContainer: { backgroundColor, justifyContent: 'center', alignItems: 'center', overflow: 'hidden' },
+    watchOrigin: { position: 'absolute', width, bottom: 20, justifyContent: 'center', alignItems: 'center' },
     watchOriginTouchable: {
       paddingLeft: 10,
       paddingRight: 10,
@@ -44,14 +24,7 @@ export default (
     imageStyle: {},
     container: { backgroundColor }, // 多图浏览需要调整整体位置的盒子
     moveBox: { flexDirection: 'row', alignItems: 'center' },
-    menuContainer: {
-      position: 'absolute',
-      width,
-      height,
-      left: 0,
-      bottom: 0,
-      zIndex: 12
-    },
+    menuContainer: { position: 'absolute', width, height, left: 0, bottom: 0, zIndex: 12 },
     menuShadow: {
       position: 'absolute',
       width,
@@ -86,7 +59,7 @@ export const simpleStyle: {
     position: 'absolute',
     left: 0,
     right: 0,
-    top: Platform.OS === 'ios' ? 50 : 38,
+    top: Platform.OS === 'ios' ? 60 : 38,
     zIndex: 13,
     justifyContent: 'center',
     alignItems: 'center',
