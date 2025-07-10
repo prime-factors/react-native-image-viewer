@@ -15,7 +15,7 @@ import {
   ViewStyle
 } from 'react-native';
 import ImageZoom from 'react-native-image-pan-zoom';
-import styles from './image-viewer.style';
+import styles, { simpleStyle } from './image-viewer.style';
 import { IImageInfo, IImageSize, Props, State } from './image-viewer.type';
 
 export default class ImageViewer extends React.Component<Props, State> {
@@ -589,6 +589,22 @@ export default class ImageViewer extends React.Component<Props, State> {
       }
     });
 
+    const currentStyles = simpleStyle({
+      color: this.props.countTextColor,
+      fontSize: this.props.countTextFontSize,
+      fontWeight: this.props.countTextFontWeight
+    });
+
+    const indicator = this.props.renderIndicator ? (
+      this.props.renderIndicator((this.state.currentShowIndex || 0) + 1, this.props.imageUrls.length)
+    ) : (
+      <View style={currentStyles.count}>
+        <Text style={currentStyles.countText}>
+          {`${(this.state.currentShowIndex || 0) + 1}/${this.props.imageUrls.length}`}
+        </Text>
+      </View>
+    );
+
     return (
       <Animated.View style={{ zIndex: 9 }}>
         <Animated.View style={{ ...this.styles.container, opacity: this.fadeAnim }}>
@@ -615,7 +631,7 @@ export default class ImageViewer extends React.Component<Props, State> {
           >
             {ImageElements}
           </Animated.View>
-          {this!.props!.renderIndicator!((this.state.currentShowIndex || 0) + 1, this.props.imageUrls.length)}
+          {indicator}
 
           {this.props.imageUrls[this.state.currentShowIndex || 0] &&
             this.props.imageUrls[this.state.currentShowIndex || 0].originSizeKb &&

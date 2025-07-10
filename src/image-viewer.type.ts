@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Image, ImageURISource, Text, View, ViewStyle } from 'react-native';
-import { simpleStyle } from './image-viewer.style';
 
 interface IOnMove {
   type: string;
@@ -69,6 +68,32 @@ export class Props {
   public style?: ViewStyle = {};
 
   /**
+   * color of counter text
+   */
+  public countTextColor?: string;
+
+  /**
+   * font size of counter text
+   */
+  public countTextFontSize?: number;
+
+  /**
+   * font weight of counter text
+   */
+  public countTextFontWeight?:
+    | 'bold'
+    | 'normal'
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900';
+
+  /**
    * Enable swipe down to close image viewer.
    * When swipe down, will trigger onCancel.
    */
@@ -98,7 +123,7 @@ export class Props {
    */
   public pageAnimateTime?: number = 100;
 
-  /** 
+  /**
    * 是否启用原生动画驱动
    * Whether to use the native code to perform animations.
    */
@@ -154,16 +179,7 @@ export class Props {
   /**
    * 自定义计时器
    */
-  public renderIndicator?: (currentIndex?: number, allSize?: number) => React.ReactElement<any> = (
-    currentIndex?: number,
-    allSize?: number
-  ) => {
-    return React.createElement(
-      View,
-      { style: simpleStyle.count },
-      React.createElement(Text, { style: simpleStyle.countText }, currentIndex + '/' + allSize)
-    );
-  };
+  public renderIndicator?: (currentIndex?: number, allSize?: number) => React.ReactElement<any>;
 
   /**
    * Render image component

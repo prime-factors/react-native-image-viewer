@@ -52,9 +52,15 @@ export default (
   };
 };
 
-export const simpleStyle: {
+export const simpleStyle = (
+  params: {
+    color?: string;
+    fontSize?: number;
+    fontWeight?: 'bold' | 'normal' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
+  } = {}
+): {
   [x: string]: ViewStyle | TextStyle;
-} = {
+} => ({
   count: {
     position: 'absolute',
     left: 0,
@@ -66,9 +72,9 @@ export const simpleStyle: {
     backgroundColor: 'transparent'
   },
   countText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
+    color: params.color || 'white',
+    fontSize: params.fontSize || 16,
+    fontWeight: params.fontWeight || 'bold',
     backgroundColor: 'transparent',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: {
@@ -77,4 +83,4 @@ export const simpleStyle: {
     },
     textShadowRadius: 0
   }
-};
+});
